@@ -1,0 +1,243 @@
+@import "tailwindcss";
+@import "swiper/swiper-bundle.css";
+
+/* ============================================================
+   Aldia Inmobiliaria · Design tokens
+   Palette derived from the company logo:
+   orange #FE6602, charcoal #131111, warm neutrals.
+   ============================================================ */
+@theme {
+  --color-brand-50: #fff4ec;
+  --color-brand-100: #ffe6d4;
+  --color-brand-200: #ffc9a3;
+  --color-brand-500: #fe6602;
+  --color-brand-600: #e55a00;
+  --color-brand-700: #c24e00;
+
+  --color-ink-900: #131111;
+  --color-ink-700: #3b3734;
+  --color-ink-500: #6f6a66;
+  --color-ink-300: #b8b3af;
+
+  --color-surface: #f8f6f4;
+  --color-line: #e9e5e2;
+
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* z-index scale: base 0 · navbar 50 · mobile menu 60 · cursor 70 · skip link 80 */
+
+:root {
+  --ease: cubic-bezier(0.32, 0.72, 0, 1);
+  --text-secondary: #6f6a66;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-ink-900);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-brand-500) 18%, transparent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand-500);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+h1, h2, h3 {
+  text-wrap: balance;
+  letter-spacing: -0.02em;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Skip to content (keyboard users) */
+.skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 80;
+  transform: translateY(-200%);
+  background: var(--color-ink-900);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: transform 0.3s var(--ease);
+}
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+/* Scroll reveals: translate-y-16 + blur, resolved over 800ms */
+.reveal {
+  opacity: 0;
+  transform: translateY(64px);
+  filter: blur(8px);
+  transition:
+    opacity 0.8s var(--ease),
+    transform 0.8s var(--ease),
+    filter 0.8s var(--ease);
+  will-change: opacity, transform, filter;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+}
+
+/* Swiper pagination tuned to the brand */
+.swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: #ffffff;
+  opacity: 0.5;
+  transition: all 0.3s var(--ease);
+}
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  width: 24px;
+  background: var(--color-brand-500);
+}
+
+/* ============================================================
+   AFTERIMAGE CURSOR · especificación original, sin modificaciones
+   ============================================================ */
+
+/* Colour tokens — override to re-skin the cursor:
+   --ink    underlying text colour (defaults to currentColor)
+   --ink-2  primary accent
+   --ink-3  secondary accent */
+:root {
+  --ink: currentColor;
+  --ink-2: #FF4FD8;
+  --ink-3: #4FF8FF;
+}
+
+@property --x { syntax: '<length-percentage>'; inherits: true; initial-value: 50%; }
+@property --y { syntax: '<length-percentage>'; inherits: true; initial-value: 50%; }
+@property --angle { syntax: '<angle>'; inherits: true; initial-value: 0deg; }
+@property --speed { syntax: '<number>'; inherits: true; initial-value: 0; }
+
+.cur {
+  --c: var(--ink-2);   /* cursor primary colour  */
+  --c2: var(--ink-3);  /* cursor accent colour   */
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  cursor: none;
+  touch-action: none;
+}
+
+/* "hover" affordance — fades out once the pointer is inside */
+.cur-hint {
+  color: color-mix(in srgb, var(--text-secondary) 55%, transparent);
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.cur.is-active .cur-hint { opacity: 0; }
+
+/* underlying content — only revealed by the effects that act on it */
+.cur-word {
+  display: none;
+  font: 600 30px/1 "JetBrains Mono", monospace;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  pointer-events: none;
+  user-select: none;
+}
+.cur-blend .cur-word, .cur-spotlight .cur-word, .cur-magnet .cur-word { display: block; }
+
+/* the follower — positioned from --x/--y, eased with a transition */
+.cursor {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--c);
+  transform: translate(-50%, -50%);
+  transition: left 0.16s cubic-bezier(0.22, 1, 0.36, 1),
+              top 0.16s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+  will-change: left, top;
+}
+
+/* ---------- The cursors ----------
+   Each cursor paints with two tokens so a copied snippet can be re-skinned:
+     --ink-2  primary accent (hot magenta)
+     --ink-3  secondary (electric cyan)
+   Ambient keyframes are cur-prefixed to stay collision-free. */
+
+/* 11 Afterimage — staggered translucent echoes trailing the pointer */
+.cur-ghost .cursor {
+  width: 26px;
+  height: 26px;
+  background: color-mix(in srgb, var(--c) 70%, transparent);
+  opacity: calc(1 - var(--i) * 0.15);
+  transition-duration: calc(0.1s + var(--i) * 0.06s);
+  mix-blend-mode: screen;
+}
+
+/* ============================================================
+   Fin de la especificación Afterimage.
+   Integración con el sitio (capas nuevas, no altera lo anterior):
+   convierte .cur en una capa fija de ventana completa que nunca
+   intercepta clics, la retira en pantallas táctiles y apaga los
+   seguidores cuando el sistema pide movimiento reducido.
+   ============================================================ */
+body > .cur {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+}
+
+@media (hover: none), (pointer: coarse) {
+  body > .cur {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body > .cur .cursor,
+  body > .cur .cur-hint {
+    display: none;
+  }
+}
