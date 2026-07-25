@@ -4,7 +4,6 @@ import './globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import SmoothScroll from '@/components/motion/SmoothScroll';
-import AfterimageCursor from '@/components/cursor/AfterimageCursor';
 import { BUSINESS } from '@/data/business';
 
 const manrope = Manrope({
@@ -98,7 +97,6 @@ export default function RootLayout({
           Ir al contenido
         </a>
         <SmoothScroll />
-        <AfterimageCursor />
         <Navbar />
         <main id="contenido">{children}</main>
         <Footer />
