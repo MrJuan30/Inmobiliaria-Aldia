@@ -22,12 +22,12 @@ npm run build # producción
 npm start     # sirve la build
 ```
 
-## Assets de imagen
+## Fotografías
 
-Las imágenes generadas del sitio (`public/images/` y `src/app/icon.png`) no
-están en este repositorio: se distribuyen con el paquete de entrega del
-proyecto. Tras clonar, copia esa carpeta en `public/images/` y el icono en
-`src/app/icon.png` para ver el sitio completo.
+Las fotos del sitio (hero, inmuebles y tarjetas) son imágenes de stock de
+Unsplash servidas desde su CDN (`images.unsplash.com`, autorizado en
+`next.config.ts`). Son marcadores de posición: reemplazar por fotografía
+real del negocio y de cada inmueble antes del lanzamiento final.
 
 ## Arquitectura
 
@@ -40,7 +40,6 @@ src/
     properties/           # Tarjetas, explorador con filtros, galería, acciones
     contact/              # Formulario (RHF + Zod)
     motion/               # Reveal (IntersectionObserver), Parallax (GSAP), SmoothScroll (Lenis)
-    cursor/               # Cursor Afterimage (especificación del cliente)
     ui/                   # Botones
   data/
     business.ts           # Datos reales del negocio (NAP, WhatsApp, horarios)
@@ -59,15 +58,6 @@ Todo el contenido vive en `src/data/` con tipos explícitos
    el CMS (o a un adapter que mantenga la misma interfaz `Property[]`).
 3. Las páginas no cambian: ya consumen los datos a través de `data/` y de
    `generateStaticParams`.
-
-## Cursor Afterimage
-
-Implementación exacta de la especificación entregada por el cliente:
-marcado, clases, variables CSS, tiempos y curvas sin modificaciones
-(`globals.css` + `public/cursor/afterimage.js`). La integración con el
-sitio (capa fija, `pointer-events: none`, oculto en táctil y en
-`prefers-reduced-motion`) está marcada con comentarios y no altera la
-especificación.
 
 ## Datos del negocio
 
