@@ -23,7 +23,7 @@ export default function Hero() {
         <Parallax speed={0.1} className="h-[118%]">
           <div className="relative h-full w-full">
             <Image
-              src="/images/hero-apartamentos-bogota.webp"
+              src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=2400&q=80"
               alt=""
               fill
               priority

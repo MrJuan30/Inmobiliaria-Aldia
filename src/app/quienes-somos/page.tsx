@@ -70,7 +70,7 @@ export default function QuienesSomosPage() {
               <Parallax speed={0.08} className="h-[118%]">
                 <div className="relative h-full w-full">
                   <Image
-                    src="/images/equipo-oficina-aldia-inmobiliaria.webp"
+                    src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=80"
                     alt="El equipo de Aldia Inmobiliaria revisando planos de un inmueble en la oficina"
                     fill
                     sizes="(min-width: 1024px) 50vw, 100vw"

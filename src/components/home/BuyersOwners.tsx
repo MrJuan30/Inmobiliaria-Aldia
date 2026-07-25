@@ -15,7 +15,8 @@ const TARJETAS = [
     cta: 'Hablar por WhatsApp',
     href: waLink('Hola, tengo un inmueble y quiero venderlo o arrendarlo con Aldia Inmobiliaria.'),
     externo: true,
-    imagen: '/images/equipo-oficina-aldia-inmobiliaria.webp',
+    imagen:
+      'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1600&q=80',
     alt: 'Equipo de Aldia Inmobiliaria revisando planos en la oficina',
     speed: 0.08,
   },
@@ -27,7 +28,8 @@ const TARJETAS = [
     cta: 'Buscar viviendas',
     href: '/viviendas',
     externo: false,
-    imagen: '/images/propiedades/apartamento-colina-campestre-sala-comedor.webp',
+    imagen:
+      'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=80',
     alt: 'Sala comedor iluminada de un apartamento en Bogotá',
     speed: -0.08,
   },

@@ -13,6 +13,9 @@ const manrope = Manrope({
   display: 'swap',
 });
 
+const OG_IMAGE =
+  'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&h=630&q=80';
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.aldiainmobiliaria.com.co'),
   title: {
@@ -39,10 +42,10 @@ export const metadata: Metadata = {
       'Inmobiliaria en Bogotá con más de 10 años de experiencia. Apartamentos, casas y oficinas en venta y arriendo.',
     images: [
       {
-        url: '/images/hero-apartamentos-bogota.webp',
-        width: 2048,
-        height: 1066,
-        alt: 'Edificio de apartamentos en una calle arbolada de Bogotá',
+        url: OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: 'Edificio de apartamentos en Bogotá',
       },
     ],
   },
@@ -51,7 +54,7 @@ export const metadata: Metadata = {
     title: 'Aldia Inmobiliaria: venta y arriendo de inmuebles en Bogotá',
     description:
       'Inmobiliaria en Bogotá con más de 10 años de experiencia. Apartamentos, casas y oficinas en venta y arriendo.',
-    images: ['/images/hero-apartamentos-bogota.webp'],
+    images: [OG_IMAGE],
   },
   robots: { index: true, follow: true },
 };
@@ -65,7 +68,7 @@ const jsonLd = {
   '@type': 'RealEstateAgent',
   name: BUSINESS.nombre,
   url: 'https://www.aldiainmobiliaria.com.co/',
-  image: 'https://www.aldiainmobiliaria.com.co/images/hero-apartamentos-bogota.webp',
+  image: OG_IMAGE,
   telephone: '+57 310 688 2798',
   email: BUSINESS.email,
   priceRange: '$$',

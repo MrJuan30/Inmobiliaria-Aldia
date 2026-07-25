@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import {
   PiClock,
   PiEnvelopeSimple,
@@ -20,6 +19,28 @@ const EXPLORA = [
   { href: '/terminos', label: 'Términos de uso' },
 ];
 
+function RoofMark({ className = '' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 32 24" className={className} aria-hidden="true" fill="none">
+      <path
+        d="M2 14 16 2l14 12"
+        stroke="#FE6602"
+        strokeWidth="3.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path d="M21 6V2h4v7" fill="#FE6602" />
+      <path
+        d="M8 22v-7h16v7"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export default function Footer() {
   const year = new Date().getFullYear();
 
@@ -27,14 +48,15 @@ export default function Footer() {
     <footer className="border-t border-line bg-white">
       <div className="mx-auto grid max-w-[1280px] gap-12 px-6 py-16 md:px-8 lg:grid-cols-[1.15fr_1fr_0.8fr_1.3fr]">
         <div>
-          <Link href="/" aria-label="Aldia Inmobiliaria, ir al inicio">
-            <Image
-              src="/images/logo.png"
-              alt="Logo de Aldia Inmobiliaria"
-              width={560}
-              height={320}
-              className="h-14 w-auto"
-            />
+          <Link
+            href="/"
+            aria-label="Aldia Inmobiliaria, ir al inicio"
+            className="inline-flex items-center gap-2 text-ink-900"
+          >
+            <RoofMark className="h-6 w-8" />
+            <span className="text-lg font-semibold tracking-tight">
+              Aldía <span className="font-medium">Inmobiliaria</span>
+            </span>
           </Link>
           <p className="mt-4 max-w-xs text-sm leading-6 text-ink-500">
             {BUSINESS.eslogan}. Acompañamiento cercano para familias y empresas

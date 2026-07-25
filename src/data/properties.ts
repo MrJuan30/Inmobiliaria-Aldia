@@ -1,6 +1,11 @@
 import type { Property } from '@/lib/types';
 
-const IMG = '/images/propiedades';
+/**
+ * Fotos de stock (Unsplash) como marcador de posición del inventario.
+ * Reemplazar por fotografía real de cada inmueble cuando esté disponible.
+ */
+const foto = (id: string) =>
+  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1600&q=80`;
 
 /**
  * Inventario V1 (datos estáticos). En V2 cada objeto de esta lista
@@ -28,8 +33,8 @@ export const PROPERTIES: Property[] = [
     estrato: 4,
     administracion: 480000,
     imagenes: [
-      { src: `${IMG}/apartamento-chapinero-alto-exterior.webp`, alt: 'Fachada del edificio de apartamentos en Chapinero Alto, Bogotá' },
-      { src: `${IMG}/apartamento-chapinero-alto-sala.webp`, alt: 'Sala del apartamento con ventanal y vista a la ciudad' },
+      { src: foto('photo-1460317442991-0ec209397118'), alt: 'Fachada del edificio de apartamentos en Chapinero Alto, Bogotá' },
+      { src: foto('photo-1522708323590-d24dbb6b0267'), alt: 'Sala del apartamento con ventanal y vista a la ciudad' },
     ],
     destacado: true,
   },
@@ -53,8 +58,8 @@ export const PROPERTIES: Property[] = [
     parqueaderos: 2,
     estrato: 4,
     imagenes: [
-      { src: `${IMG}/casa-cedritos-exterior.webp`, alt: 'Fachada de casa de ladrillo con jardín frontal en Cedritos, Bogotá' },
-      { src: `${IMG}/casa-cedritos-comedor.webp`, alt: 'Comedor de la casa con mesa de madera y muro de ladrillo' },
+      { src: foto('photo-1600585154340-be6161a56a0c'), alt: 'Fachada de casa con jardín frontal en Cedritos, Bogotá' },
+      { src: foto('photo-1600607687939-ce8a6c25118c'), alt: 'Comedor de la casa con mesa de madera y muro de ladrillo' },
     ],
     destacado: true,
   },
@@ -79,8 +84,8 @@ export const PROPERTIES: Property[] = [
     estrato: 4,
     administracion: 350000,
     imagenes: [
-      { src: `${IMG}/apartamento-usaquen-exterior.webp`, alt: 'Edificio moderno de apartamentos en Usaquén, Bogotá' },
-      { src: `${IMG}/apartamento-usaquen-cocina.webp`, alt: 'Cocina abierta del apartamento con barra de madera' },
+      { src: foto('photo-1448630360428-65456885c650'), alt: 'Edificio moderno de apartamentos en Usaquén, Bogotá' },
+      { src: foto('photo-1502672260266-1c1ef2d93688'), alt: 'Cocina abierta del apartamento con barra de madera' },
     ],
     destacado: true,
   },
@@ -105,8 +110,8 @@ export const PROPERTIES: Property[] = [
     estrato: 3,
     administracion: 290000,
     imagenes: [
-      { src: `${IMG}/apartamento-suba-exterior.webp`, alt: 'Torres del conjunto residencial con zona verde en Suba, Bogotá' },
-      { src: `${IMG}/apartamento-suba-habitacion.webp`, alt: 'Habitación principal del apartamento con ventana amplia' },
+      { src: foto('photo-1515263487990-61b07816b324'), alt: 'Torres del conjunto residencial con zona verde en Suba, Bogotá' },
+      { src: foto('photo-1560448204-e02f11c3d0e2'), alt: 'Habitación principal del apartamento con ventana amplia' },
     ],
     destacado: true,
   },
@@ -130,8 +135,8 @@ export const PROPERTIES: Property[] = [
     parqueaderos: 4,
     estrato: 5,
     imagenes: [
-      { src: `${IMG}/oficina-chico-exterior.webp`, alt: 'Edificio empresarial de vidrio y ladrillo en Chicó, Bogotá' },
-      { src: `${IMG}/oficina-chico-interior.webp`, alt: 'Planta libre de la oficina con ventanales y vista a la ciudad' },
+      { src: foto('photo-1486406146926-c627a92ad1ab'), alt: 'Edificio empresarial de vidrio y ladrillo en Chicó, Bogotá' },
+      { src: foto('photo-1497366216548-37526070297c'), alt: 'Planta libre de la oficina con ventanales y vista a la ciudad' },
     ],
     destacado: false,
   },
@@ -155,8 +160,8 @@ export const PROPERTIES: Property[] = [
     parqueaderos: 2,
     estrato: 3,
     imagenes: [
-      { src: `${IMG}/casa-engativa-exterior.webp`, alt: 'Fachada de casa esquinera de ladrillo en Engativá, Bogotá' },
-      { src: `${IMG}/casa-engativa-sala.webp`, alt: 'Sala de la casa con muro de chimenea en ladrillo' },
+      { src: foto('photo-1570129477492-45c003edd2be'), alt: 'Fachada de casa esquinera de ladrillo en Engativá, Bogotá' },
+      { src: foto('photo-1600566753190-17f0baa2a6c3'), alt: 'Sala de la casa con muro de chimenea en ladrillo' },
     ],
     destacado: true,
   },
@@ -181,8 +186,8 @@ export const PROPERTIES: Property[] = [
     estrato: 3,
     administracion: 320000,
     imagenes: [
-      { src: `${IMG}/apartamento-teusaquillo-exterior.webp`, alt: 'Edificio clásico de ladrillo en Teusaquillo, Bogotá' },
-      { src: `${IMG}/apartamento-teusaquillo-sala.webp`, alt: 'Sala del apartamento con piso de parqué y vista a los árboles' },
+      { src: foto('photo-1568605114967-8130f3a36994'), alt: 'Edificio clásico de ladrillo en Teusaquillo, Bogotá' },
+      { src: foto('photo-1554995207-c18c203602cb'), alt: 'Sala del apartamento con piso de parqué y vista a los árboles' },
     ],
     destacado: true,
   },
@@ -207,8 +212,8 @@ export const PROPERTIES: Property[] = [
     estrato: 5,
     administracion: 620000,
     imagenes: [
-      { src: `${IMG}/apartamento-colina-campestre-exterior.webp`, alt: 'Edificio moderno de apartamentos en Colina Campestre, Bogotá' },
-      { src: `${IMG}/apartamento-colina-campestre-sala-comedor.webp`, alt: 'Sala comedor del dúplex con ventanal de piso a techo' },
+      { src: foto('photo-1600596542815-ffad4c1539a9'), alt: 'Edificio moderno de apartamentos en Colina Campestre, Bogotá' },
+      { src: foto('photo-1600566753086-00f18fb6b3ea'), alt: 'Sala comedor del dúplex con ventanal de piso a techo' },
     ],
     destacado: false,
   },
